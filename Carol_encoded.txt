@@ -1,0 +1,18 @@
+
+
+def encode(text:str, key:int) -> str:
+    alphabets:str="abcdefghijklmnopqrstuvwxyz".upper()    #predefine all the alphabets in uppercase.
+    output_text:str=""    #define the output_text as empty string
+
+    if key not in range(1, 25): #if key not in 1-25, return Empty string and show error in console
+        print('Incorret key provided! Key must be within 1-25')
+        return ''
+    
+    for letter in text:     #goes through every letter in text string provided.
+        if letter in alphabets:     #if letter is in predefined alphabets
+            shifted_position = (alphabets.index(letter) + key)%26   #Get the shifted position
+            output_text = output_text + alphabets[shifted_position] #shift the text position and add it to the output text
+        else:   #if letter is not in predefined alphabets
+            output_text += letter #add it to the output_string without chaging it as it must be space
+
+    return output_text #now everything is done so return the string.
